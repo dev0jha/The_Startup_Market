@@ -1,3 +1,8 @@
+---
+title: The Startup Market Documentation
+description: Modern platform to share, pitch, and discover startups.
+---
+
 # 🚀 The Startup Market
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.0-black?style=flat&logo=next.js)](https://nextjs.org/)
@@ -5,39 +10,42 @@
 [![Sanity](https://img.shields.io/badge/Sanity-CMS-red?style=flat&logo=sanity)](https://www.sanity.io/)
 [![NextAuth](https://img.shields.io/badge/NextAuth-5.0-purple?style=flat)](https://next-auth.js.org/)
 
-**The Startup Market** is a modern platform where entrepreneurs can pitch their startup ideas, connect with like-minded innovators, and get feedback from the community. Built with cutting-edge technologies for a seamless, real-time experience.
+**The Startup Market** is a modern platform for entrepreneurs to pitch their startup ideas, connect with innovators, and get real community feedback, powered by a cutting-edge tech stack.
 
 ---
 
 ## ✨ Features
 
-- 🔐 **GitHub OAuth Authentication** - Secure login with NextAuth
-- 📝 **Create & Pitch Startups** - Share your ideas with rich markdown content
-- 🔍 **Search & Filter** - Find startups by category, keywords, or trending
-- 👀 **Real-time Views** - Track startup engagement with live view counts
-- 💬 **Interactive Cards** - Beautiful startup cards with images and descriptions
-- 🎨 **Modern UI** - Built with Tailwind CSS and Radix UI components
-- 📊 **Sanity CMS** - Powerful content management with real-time updates
-- 🌐 **Responsive Design** - Works seamlessly on all devices
+- 🔐 **GitHub OAuth Authentication** — Secure login via NextAuth
+- 📝 **Create & Pitch Startups** — Share your ideas with rich markdown support
+- 🔍 **Search & Filter** — Find startups by category, keywords, or trending topics
+- 👀 **Real-time Views** — Track engagement with live view counts
+- 💬 **Interactive Cards** — Startup cards with images & descriptions
+- 🎨 **Modern UI** — Tailwind CSS + Radix UI
+- 📊 **Sanity CMS** — Real-time, flexible content management
+- 🌐 **Responsive Design** — Optimized for all devices
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **[Next.js 15](https://nextjs.org/)** - React framework with App Router
-- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe development
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Radix UI](https://www.radix-ui.com/)** - Accessible component primitives
-- **[Lucide React](https://lucide.dev/)** - Beautiful icons
+
+- **[Next.js 15](https://nextjs.org/)** — React framework with App Router
+- **[TypeScript](https://www.typescriptlang.org/)** — Type-safe JS
+- **[Tailwind CSS](https://tailwindcss.com/)** — Utility-first CSS
+- **[Radix UI](https://www.radix-ui.com/)** — Accessible component primitives
+- **[Lucide React](https://lucide.dev/)** — Icon library
 
 ### Backend & CMS
-- **[Sanity](https://www.sanity.io/)** - Headless CMS for content management
-- **[NextAuth.js](https://next-auth.js.org/)** - Authentication solution
-- **[Sanity Live](https://www.sanity.io/docs/live-content-api)** - Real-time content updates
+
+- **[Sanity](https://www.sanity.io/)** — Headless CMS
+- **[NextAuth.js](https://next-auth.js.org/)** — Authentication system
+- **[Sanity Live](https://www.sanity.io/docs/live-content-api)** — Real-time updates
 
 ### Deployment
-- **[Vercel](https://vercel.com/)** - Production hosting (recommended)
+
+- **[Vercel](https://vercel.com/)** — Production hosting (recommended)
 
 ---
 
@@ -45,10 +53,10 @@
 
 ### Prerequisites
 
-- **Node.js** 20.x or higher
-- **npm** or **yarn** or **pnpm**
-- **GitHub OAuth App** (for authentication)
-- **Sanity Account** (for CMS)
+- Node.js 20.x or higher
+- npm / yarn / pnpm
+- GitHub OAuth App (for authentication)
+- Sanity Account (for CMS)
 
 ### 1️⃣ Clone the Repository
 
@@ -86,19 +94,21 @@ GITHUB_SECRET=your_github_client_secret
 #### 🔑 Get Your Keys
 
 **Sanity:**
+
 1. Create a project at [sanity.io](https://www.sanity.io/)
-2. Run `npm create sanity@latest` or get keys from your Sanity dashboard
+2. Run `npm create sanity@latest` and grab your keys from the Dashboard
 3. Generate a write token with "Editor" permissions
 
 **GitHub OAuth:**
+
 1. Go to GitHub → Settings → Developer settings → OAuth Apps
 2. Create a new OAuth App
 3. Set **Authorization callback URL** to: `http://localhost:3000/api/auth/callback/github`
-4. Copy Client ID and Client Secret
+4. Copy Client ID and Secret
 
 **NextAuth Secret:**
+
 ```bash
-# Generate a random secret
 openssl rand -base64 32
 ```
 
@@ -125,7 +135,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📁 Project Structure
 
-```
+```text
 The_Startup_Market/
 ├── app/
 │   ├── (root)/               # Main app routes
@@ -145,22 +155,18 @@ The_Startup_Market/
 │   ├── StartupForm.tsx       # Create/edit startup form
 │   └── ui/                   # Reusable UI components
 ├── sanity/
-│   ├── schemaTypes/          # Sanity schema definitions
-│   │   ├── startup.ts        # Startup content model
-│   │   ├── author.ts         # Author/user model
+│   ├── schemaTypes/          # Sanity schema
+│   │   ├── startup.ts        # Startup model
+��   │   ├── author.ts         # User model
 │   │   └── playlist.ts       # Curated lists
-│   ├── lib/
-│   │   ├── client.ts         # Sanity read client
-│   │   ├── write-client.ts   # Sanity write client
-│   │   ├── queries.ts        # GROQ queries
-│   │   └── live.ts           # Real-time subscriptions
+│   ├── lib/                  # Sanity clients, queries, subscriptions
 │   └── env.ts                # Environment variables
 ├── lib/
 │   ├── actions.ts            # Server actions
 │   ├── utils.ts              # Utility functions
 │   └── validation.ts         # Form validation
-├── auth.ts                   # NextAuth configuration
-└── .env.local                # Environment variables (create this)
+├── auth.ts                   # NextAuth config
+└── .env.local                # (Create this)
 ```
 
 ---
@@ -168,34 +174,37 @@ The_Startup_Market/
 ## 🎯 Key Features Explained
 
 ### Authentication Flow
-- **GitHub OAuth** integration using NextAuth.js
-- User data automatically synced to Sanity CMS
-- Server-side session management for security
+
+- **GitHub OAuth** integration via NextAuth.js
+- User data synced to Sanity CMS
+- Secure, server-side session management
 
 ### Content Management
-- **Sanity Studio** embedded at `/studio` route
-- Real-time content updates with Sanity Live
-- Markdown support for rich startup pitches
-- Image optimization with Next.js Image component
+
+- **Sanity Studio** embedded at `/studio`
+- Real-time updates with Sanity Live API
+- Markdown support for startup pitches
+- Built-in image optimization
 
 ### Startup Listings
-- Dynamic filtering and search
+
+- Dynamic search & filtering
 - View count tracking
-- Category-based organization
-- Editor's picks and curated playlists
+- Category organization
+- Editor’s picks & curated playlists
 
 ---
 
-## 🔧 Available Scripts
+## 🔧 Scripts
 
 ```bash
 # Development
-npm run dev          # Start development server
+npm run dev          # Start dev server
 npm run build        # Build for production
 npm run start        # Start production server
 
 # Sanity
-npm run typegen      # Generate TypeScript types from Sanity schema
+npm run typegen      # Generate TS types from Sanity schema
 
 # Code Quality
 npm run lint         # Run ESLint
@@ -205,21 +214,24 @@ npm run lint         # Run ESLint
 
 ## 🐛 Troubleshooting
 
-### Login Not Working
-- Ensure `GITHUB_ID` and `GITHUB_SECRET` are correct
-- Verify callback URL in GitHub OAuth app matches: `http://localhost:3000/api/auth/callback/github`
-- Check that `NEXTAUTH_SECRET` is set
-- Restart dev server after changing `.env.local`
+#### Login Not Working
 
-### Sanity Connection Issues
-- Verify `NEXT_PUBLIC_SANITY_PROJECT_ID` matches your project
-- Ensure `SANITY_WRITE_TOKEN` has "Editor" permissions
-- Run `npm run typegen` to regenerate types
+- Check `GITHUB_ID` & `GITHUB_SECRET`
+- Verify GitHub OAuth callback URL: `http://localhost:3000/api/auth/callback/github`
+- Ensure `NEXTAUTH_SECRET` is set
+- Restart dev server if you update `.env.local`
 
-### Build Errors
-- Try `npm install --legacy-peer-deps` to resolve peer dependency conflicts
-- Clear `.next` folder: `rm -rf .next`
-- Regenerate types: `npm run typegen`
+#### Sanity Issues
+
+- Check `NEXT_PUBLIC_SANITY_PROJECT_ID`
+- Ensure `SANITY_WRITE_TOKEN` is valid and with proper permissions
+- Run `npm run typegen` after schema changes
+
+#### Build Errors
+
+- Use `npm install --legacy-peer-deps`
+- Clear `.next`: `rm -rf .next`
+- Re-run `npm run typegen`
 
 ---
 
@@ -230,61 +242,61 @@ npm run lint         # Run ESLint
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/dev0jha/The_Startup_Market)
 
 1. Push your code to GitHub
-2. Import project in [Vercel](https://vercel.com/)
-3. Add environment variables in Vercel dashboard
-4. Update GitHub OAuth callback URL to your production domain
+2. Import into [Vercel](https://vercel.com/)
+3. Add env variables in the dashboard
+4. Update GitHub OAuth callback in your production settings
 5. Deploy!
 
-**Important:** Update `NEXTAUTH_URL` and GitHub callback URL to your production domain.
+**Note:** Update `NEXTAUTH_URL` & GitHub callback for production.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here's how you can help:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
+1. **Fork** the repo
+2. **Create** a branch (`git checkout -b feature/my-feature`)
+3. **Commit** (`git commit -m "Add my feature"`)
+4. **Push** (`git push origin feature/my-feature`)
 5. **Open** a Pull Request
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT — see [LICENSE](LICENSE).
 
 ---
 
 ## 👨‍💻 Author
 
-**Dev Ojha**
-
-- GitHub: [@dev0jha](https://github.com/dev0jha)
-- Project: [The Startup Market](https://github.com/dev0jha/The_Startup_Market)
+**Dev Ojha**  
+- [GitHub @dev0jha](https://github.com/dev0jha)  
+- [Project Home](https://github.com/dev0jha/The_Startup_Market)
 
 ---
 
 ## 🙏 Acknowledgments
 
-- [Next.js Team](https://nextjs.org/) for the amazing framework
-- [Sanity](https://www.sanity.io/) for the powerful CMS
-- [Vercel](https://vercel.com/) for hosting platform
-- [Radix UI](https://www.radix-ui.com/) for accessible components
-- All contributors and supporters!
+- [Next.js](https://nextjs.org/)
+- [Sanity](https://www.sanity.io/)
+- [Vercel](https://vercel.com/)
+- [Radix UI](https://www.radix-ui.com/)
+- All contributors & supporters!
 
 ---
 
 ## 📸 Screenshots
 
 ### Home Page
+
 ![Home Page](https://via.placeholder.com/800x400?text=Home+Page+Screenshot)
 
 ### Startup Detail
+
 ![Startup Detail](https://via.placeholder.com/800x400?text=Startup+Detail+Screenshot)
 
 ### Create Startup
+
 ![Create Startup](https://via.placeholder.com/800x400?text=Create+Startup+Screenshot)
 
 ---
